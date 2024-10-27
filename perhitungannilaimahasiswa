@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perhitungan Nilai Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+    </style>
+</head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistem perhitungan nilai akademik mahasiswa">
+    <meta name="keywords" content="nilai mahasiswa, perhitungan nilai, nilai akademik, grade calculator">
+    <meta name="author" content="Your Name">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <title>Sistem Perhitungan Nilai Mahasiswa</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Font dari Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS yang lebih lengkap -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #8e167c;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            input[type="number"] {
+                width: 100%;
+            }
+        }
+    </style>
+<body>
+    <h1>Perhitungan Nilai Mahasiswa</h1>
+    <label for="presensi">Nilai Presensi (0-100):</label>
+    <input type="number" id="presensi" value="0" min="0" max="100"><br><br>
+
+    <label for="tugas">Nilai Tugas (0-100):</label>
+    <input type="number" id="tugas" value="0" min="0" max="100"><br><br>
+
+    <label for="uts">Nilai UTS (0-100):</label>
+    <input type="number" id="uts" value="0" min="0" max="100"><br><br>
+
+    <label for="uas">Nilai UAS (0-100):</label>
+    <input type="number" id="uas" value="0" min="0" max="100"><br><br>
+
+    <button onclick="hitungNilai()">Hitung Nilai</button>
+
+    <h2 id="hasil"></h2>
+
+    <script>
+        function hitungNilai() {
+            // Mengambil nilai dari input
+            var presensi = parseFloat(document.getElementById("presensi").value);
+            var tugas = parseFloat(document.getElementById("tugas").value);
+            var uts = parseFloat(document.getElementById("uts").value);
+            var uas = parseFloat(document.getElementById("uas").value);
+
+            // Menghitung nilai akhir
+            var nilaiAkhir = (presensi * 0.1) + (tugas * 0.2) + (uts * 0.3) + (uas * 0.4);
+
+            // Menentukan huruf berdasarkan nilai akhir
+            var huruf;
+            if (nilaiAkhir > 80) {
+                huruf = "A";
+            } else if (nilaiAkhir > 75) {
+                huruf = "B+";
+            } else if (nilaiAkhir > 70) {
+                huruf = "B";
+            } else if (nilaiAkhir > 65) {
+                huruf = "B-";
+            } else if (nilaiAkhir > 60) {
+                huruf = "C+";
+            } else if (nilaiAkhir > 55) {
+                huruf = "C";
+            } else if (nilaiAkhir > 50) {
+                huruf = "C-";
+            } else if (nilaiAkhir > 30) {
+                huruf = "D";
+            } else {
+                huruf = "E";
+            }
+
+            // Menampilkan hasil
+            document.getElementById("hasil").innerText = "Nilai Akhir: " + nilaiAkhir.toFixed(2) + " | Huruf: " + huruf;
+        }
+    </script>
+</body>
+</html>
